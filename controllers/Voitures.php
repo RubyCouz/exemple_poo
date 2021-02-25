@@ -13,7 +13,7 @@ class Voitures extends AbstractController
         // accès à la méthode loadModel() de abstractController, qui permet de charger le model voulu
         $voiture = $this->loadModel('Voiture');
         // appel de la méthode getAll() de l'abstractController
-        $voitureList = $voiture->getAll();
+        $voitureList = $voiture->getCarsInformations();
         // envoie des données vers la vue
         $this->render('index', ['voitures' => $voitureList]);
     }

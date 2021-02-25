@@ -1,7 +1,7 @@
 <?php
 // définition const contenant chemin vers index.php
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
-
+//die(ROOT);
 require_once(ROOT . '/app/Model.php');
 require_once(ROOT . '/app/AbstractController.php');
 
@@ -24,7 +24,7 @@ if ($params[1] != '') {
         $controller = new $controller();
         // check si la method existe dans le contrôleur
         if (method_exists($controller, $action)) {
-            // on retire les premier paramêtres du tableau
+            // on retire les premiers paramêtres du tableau
             unset($params[0]);
             unset($params[1]);
             unset($params[2]);
@@ -33,11 +33,13 @@ if ($params[1] != '') {
         } else {
             // code erreur 404 si la méthode n'est pas trouvée
             http_response_code(404);
-            echo 'La page demandée n\'existe pas';
+            echo 'La méthode demandée n\'existe pas';
         }
     } else {
         // code erreur 404 sir le contrôleur n'est pas trouvé
         http_response_code(404);
         echo 'La page demandée n\'existe pas';
     }
+} else {
+    header('Location: \Home\homePage');
 }
