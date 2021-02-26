@@ -1,6 +1,5 @@
 <?php
-
-// abstract => ne pourra pas être instancier directement pour être instancier, mais sera utiliser par héritage
+// abstract => ne pourra pas être instancier directement, mais sera utiliser par héritage
 abstract class Model
 {
 // informations de bdd

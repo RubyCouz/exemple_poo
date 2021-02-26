@@ -24,4 +24,26 @@ abstract class AbstractController
 
         require_once(ROOT . '/views/layout/default.php');
     }
+
+    public function dd($data)
+    {
+        var_dump($data);
+        die();
+    }
+
+    public function validForm(array $regex, array $post): array
+    {
+        $formError = [];
+        foreach ($regex as $key => $value) {
+            if (!empty($post[$key])) {
+                if (!preg_match($value, $post[$key])) {
+                    $formError[$key] = 'Erreur sur le champ ' . $key;
+                }
+            } else {
+                $formError[$key] = 'Champ ' . $key . ' vide';
+            }
+        }
+        return $formError;
+    }
+
 }
