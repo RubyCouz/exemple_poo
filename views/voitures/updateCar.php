@@ -5,6 +5,8 @@
         </div>
     </div>
     <?php
+    var_dump($_POST);
+    var_dump($voiture->id);
     if (!empty($success)) {
         ?>
         <div class="row">
@@ -27,12 +29,12 @@
             <form action="/voitures/updateCar/<?= $voiture->id ?>" method="post">
                 <div class="mb-3">
                     <label for="model" class="form-label">Modèle :</label>
-                    <input type="text" class="form-control" id="model" value="<?= $voiture->voit_model ?>" name="model">
+                    <input type="text" class="form-control" id="model" value="<?= isset($_POST['model']) ? $_POST['model'] : $voiture->voit_model ?>" name="model">
                     <span class="error"><?= isset($error['model']) ? $error['model'] : '' ?></span>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Prix :</label>
-                    <input type="text" class="form-control" id="price" value="<?= $voiture->voit_prix ?>" name="price">
+                    <input type="text" class="form-control" id="price" value="<?= isset($_POST['price']) ? $_POST['price'] : $voiture->voit_prix ?>" name="price">
                     <span class="error"><?= isset($error['price']) ? $error['price'] : '' ?></span>
                 </div>
                 <div class="mb-3">
@@ -42,7 +44,7 @@
                         <?php
                         foreach ($marques as $marque) {
                             ?>
-                            <option value="<?= $marque->id ?>" <?= ($marque->id === $voiture->marque_id) ? 'selected' : '' ?>><?= $marque->marque_nom ?></option>
+                            <option value="<?= $marque->id ?>" <?= $marque->id == $voiture->marque_id ? 'selected' : '' ?>><?= $marque->marque_nom ?></option>
                             <?php
                         }
                         ?>

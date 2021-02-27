@@ -4,7 +4,6 @@ define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 //die(ROOT);
 require_once(ROOT . '/app/Model.php');
 require_once(ROOT . '/app/AbstractController.php');
-
 // récupération de l'url
 $uri = $_SERVER['REQUEST_URI'];
 // séparation des paramètres
@@ -20,6 +19,7 @@ if ($params[1] != '') {
     if (file_exists(ROOT . '/controllers/' . $controller . '.php')) {
         // récupération du controller demandé
         require_once(ROOT . '/controllers/' . $controller . '.php');
+//        require_once(ROOT . '/entities/VoitureEntity.php');
         // instantiation du contrôleur
         $controller = new $controller();
         // check si la method existe dans le contrôleur

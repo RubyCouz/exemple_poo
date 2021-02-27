@@ -3,7 +3,7 @@
 
 class VoitureEntity {
 
-    public int $id;
+    public string $id;
 
     public string $voit_prix;
 

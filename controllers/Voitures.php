@@ -40,13 +40,18 @@ class Voitures extends AbstractController
             $regex = [
                 'model' => '/^[\w\s]+$/',
                 'price' => '/^[\d]+$/',
-                'brand' => '/^[\w\s]$/'
+                'brand' => '/^[\w]+$/'
             ];
             // appel de la méthode valideForm de l'abstractController permettant la validation du formulaire et la génération d'éventuels message d'erreur, stockage du retour
             // dans une variable
             $formError = $this->validForm($regex, $_POST);
             // s'il n'y a pas d'erreur
             if (count($formError) === 0) {
+//                $car->id = $_POST['id'];
+                $car->voit_prix = $_POST['price'];
+                $car->voit_model = $_POST['model'];
+                $car->marque_id = $_POST['brand'];
+                $car->updateCar($id);
                 $success = 'Update success !!!';
             }
         }
