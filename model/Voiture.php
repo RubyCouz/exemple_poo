@@ -45,12 +45,12 @@ class Voiture extends Model
     }
 
     /**
+     * modification des données dans la table voiture
      * @param $id
-     * @return mixed
+     * @return bool
      */
-    public function updateCar($id)
+    public function updateCar($id): bool
     {
-
         $query = 'UPDATE ' . $this->table . ' SET `voit_prix` = :price, `voit_model` = :model, `marque_id` = :marque WHERE `id` = :id';
         $result = $this->_con->prepare($query);
         $result->bindValue(':price', $this->voit_prix, PDO::PARAM_STR);
@@ -59,6 +59,33 @@ class Voiture extends Model
         $result->bindValue(':id', $id, PDO::PARAM_STR);
 //        var_dump($this);
 //        die();
+        return $result->execute();
+    }
+
+    /**
+     * ajout de données dans la table voiture
+     * @return bool
+     */
+    public function addCar(): bool
+    {
+        $query = 'INSERT INTO `voiture` (`voit_prix`, `voit_model`, `marque_id`) VALUES (:price, :model, :brand)';
+        $result = $this->_con->prepare($query);
+        $result->bindValue(':price', $this->voit_prix, PDO::PARAM_STR);
+        $result->bindValue(':model', $this->voit_model, PDO::PARAM_STR);
+        $result->bindValue(':brand', $this->marque_id, PDO::PARAM_INT);
+        return $result->execute();
+    }
+
+    /**
+     * Suppression d'une ligne de la table voiture
+     * @param $id
+     * @return bool
+     */
+    public function delCar($id): bool
+    {
+        $query = 'DELETE FROM `voiture` WHERE `id` = :id';
+        $result = $this->_con->prepare($query);
+        $result->bindValue(':id', $id, PDO::PARAM_STR);
         return $result->execute();
     }
 
