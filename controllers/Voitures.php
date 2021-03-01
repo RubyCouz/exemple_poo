@@ -47,10 +47,10 @@ class Voitures extends AbstractController
             $formError = $this->validForm($regex, $_POST);
             // s'il n'y a pas d'erreur
             if (count($formError) === 0) {
-//                $car->id = $_POST['id'];
-                $car->voit_prix = $_POST['price'];
-                $car->voit_model = $_POST['model'];
-                $car->marque_id = $_POST['brand'];
+                // accès aux accesseur
+                $car->setVoitPrix($_POST['price']);
+                $car->setVoitModel($_POST['model']);
+                $car->setMarque($_POST['brand']);
                 $car->updateCar($id);
                 $success = 'Update success !!!';
             }
@@ -86,9 +86,9 @@ class Voitures extends AbstractController
             $formError = $this->validForm($regex, $_POST);
             // s'il n'y a pas d'erreur
             if (count($formError) === 0) {
-                $car->voit_prix = $_POST['price'];
-                $car->voit_model = $_POST['model'];
-                $car->marque_id = $_POST['brand'];
+                $car->setVoitPrix($_POST['price']);
+                $car->setVoitModel($_POST['model']);
+                $car->setMarque($_POST['brand']);
                 $car->addCar();
                 $success = 'Add success !!!';
             }

@@ -1,7 +1,8 @@
 <?php
 
 
-class VoitureEntity {
+
+class VoituresEntity extends Model {
 
     public string $id;
 

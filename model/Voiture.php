@@ -1,18 +1,17 @@
 <?php
 
-class Voiture extends Model
+class Voiture extends VoituresEntity
 {
-    public string $id = '';
-
-    public string $voit_prix = '';
-
-    public string $voit_model = '';
-
-    public string $marque_id = '';
+//    public string $id = '';
+//
+//    public string $voit_prix = '';
+//
+//    public string $voit_model = '';
+//
+//    public string $marque_id = '';
 
     public function __construct()
     {
-        require_once('entities/VoitureEntity.php');
         $this->table = 'voiture';
         $this->getConnection();
     }

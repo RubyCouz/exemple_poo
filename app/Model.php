@@ -1,4 +1,6 @@
 <?php
+
+
 // abstract => ne pourra pas être instancier directement, mais sera utiliser par héritage
 abstract class Model
 {
@@ -44,7 +46,7 @@ abstract class Model
      * @param $id
      * @return mixed
      */
-    public function getOne($id) {
+    public function getOne(string $id) {
         $this->id = $id;
         $query = 'SELECT * FROM ' . $this->table . ' WHERE `id`=:id' ;
         $result = $this->_con->prepare($query);
