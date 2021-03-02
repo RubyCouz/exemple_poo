@@ -36,7 +36,7 @@ class Voiture extends VoituresEntity
      */
     public function getOneCarById($id)
     {
-        $query = 'SELECT ' . $this->table . '.`id`, `voit_prix`, `voit_model`, `marque_nom`, `marque_id` FROM ' . $this->table . ' INNER JOIN `marque` ON ' . $this->table . '.`marque_id` = `marque`.`id`';
+        $query = 'SELECT ' . $this->table . '.`id`, `voit_prix`, `voit_model`, `marque_nom`, `marque_id` FROM ' . $this->table . ' INNER JOIN `marque` ON ' . $this->table . '.`marque_id` = `marque`.`id` WHERE ' . $this->table . '.`id` = :id';
         $result = $this->_con->prepare($query);
         $result->bindValue(':id', $id, PDO::PARAM_INT);
         $result->execute();
@@ -88,4 +88,12 @@ class Voiture extends VoituresEntity
         return $result->execute();
     }
 
+    public function getCarByModel($model)
+    {
+        $query = 'SELECT COUNT(*) AS `count` FROM ' . $this->table . ' WHERE `voit_model` = :model';
+        $result = $this->_con->prepare($query);
+        $result->bindValue(':model', $model, PDO::PARAM_STR);
+        $result->execute();
+        return $result->fetch(PDO::FETCH_OBJ);
+    }
 }

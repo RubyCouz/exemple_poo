@@ -19,7 +19,10 @@ if ($params[1] != '') {
     if (file_exists(ROOT . '/controllers/' . $controller . '.php')) {
         // récupération du controller demandé
         require_once(ROOT . '/controllers/' . $controller . '.php');
-        require_once(ROOT . 'entities/'. $controller .'Entity.php');
+        if (file_exists(ROOT . 'entities/'. $controller .'Entity.php')) {
+            require_once(ROOT . 'entities/'. $controller .'Entity.php');
+        }
+
         // instantiation du contrôleur
         $controller = new $controller();
         // check si la method existe dans le contrôleur

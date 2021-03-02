@@ -28,7 +28,7 @@
                 <div class="mb-3">
                     <label for="model" class="form-label">Modèle :</label>
                     <input type="text" class="form-control" id="model" value="<?= isset($_POST['model']) ? $_POST['model'] : '' ?>" name="model">
-                    <span class="error"><?= isset($error['model']) ? $error['model'] : '' ?></span>
+                    <span class="error" id="errorModel"><?= isset($error['model']) ? $error['model'] : '' ?></span>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Prix :</label>

@@ -120,4 +120,18 @@ class Voitures extends AbstractController
             'error' => $error
         ]);
     }
+
+    public function getCarByModel($model) {
+        // chragement du model
+        $car = $this->loadModel('Voiture');
+        // appel de la méthode
+        $carModel = $car->getCarByModel($model);
+        // s'il y au moins un résultat dans la base
+        if ($carModel->count >= 1) {
+            // affichage d'un message
+            echo 'Ce modèle est déjà existant dans la base';
+        } else {
+            echo 'Véhicule non existant';
+        }
+    }
 }
