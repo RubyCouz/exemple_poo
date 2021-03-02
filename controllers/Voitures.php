@@ -121,6 +121,10 @@ class Voitures extends AbstractController
         ]);
     }
 
+    /**
+     * méthode permettant de voir si un véhicule est présent dans la base, fonction avec ajax (cf script.js)
+     * @param $model
+     */
     public function getCarByModel($model) {
         // chragement du model
         $car = $this->loadModel('Voiture');
